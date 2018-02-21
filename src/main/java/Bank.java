@@ -9,8 +9,14 @@
  */
 public class Bank {
 
-    public String bankName;
+    /**
+     * the name of the bank we're modeling.
+     */
+    private String bankName;
 
+    /**
+     * Constructor that sets bank name.
+     */
     public Bank() {
         bankName = "Illini Bank";
     }
@@ -26,9 +32,14 @@ public class Bank {
      * @return boolean
      */
     public boolean withdrawMoney(final BankAccount bankAccount, final double amount) {
-        /*
-         * Implement this function
-         */
+        int newAmount;
+        int toWithdraw = (int) amount;
+        newAmount = bankAccount.getAccountNumber() - toWithdraw;
+        if (newAmount >= 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -42,9 +53,9 @@ public class Bank {
      * @return boolean
      */
     public boolean depositMoney(final BankAccount bankAccount, final double amount) {
-        /*
-         * Implement this function
-         */
+        double newAmount;
+        newAmount = bankAccount.getAccountBalance() + amount;
+        return true;
     }
 
     /**
@@ -61,9 +72,7 @@ public class Bank {
 
     public boolean transferMoney(final BankAccount source, final BankAccount destination,
             final double amount) {
-        /*
-         * Implement this function
-         */
+        return true;
     }
 
     /**
@@ -72,23 +81,29 @@ public class Bank {
      * @param bankAccount to change
      * @param name new name to set
      */
-
     public void changeOwnerName(final BankAccount bankAccount, final String name) {
-        /*
-         * Implement this function
-         */
+        bankAccount.ownerName = name;
     }
 
-    public static int totalAccounts = 0;
+    /**
+     * the total number of accounts.
+     */
+    private static int totalAccounts = 0;
+
     /**
      * Uses static variable to get number of bank accounts opened.
      *
      * @return the total number of accounts
      */
     public static int getNumberOfAccount() {
-        /*
-         * Implement this function
-         */
+        return totalAccounts;
+    }
+
+    /**
+     *
+     */
+    private static void setTotalAccounts() {
+        totalAccounts = 0;
     }
 
     /**
